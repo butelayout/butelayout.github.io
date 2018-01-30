@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bute Layout</title>
+  <link rel="stylesheet" href="butelayout.css">
+  <script src="highlight.pack.js"></script>
+  <style>
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: #322931;
+      font-size: 18px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 3.6rem;
+      letter-spacing: -0.03em;
+      text-indent: -0.03em;
+      margin-bottom: .15em;
+      line-height: 1;
+    }
+
+    h2 {
+      border-top: 1px solid rgba(50, 41, 49, 0.2);
+      border-bottom: 1px solid rgba(50, 41, 49, 0.2);
+      padding: .6em 0 .6em 0;
+      margin-top: 3rem;
+      margin-bottom: 0;
+      line-height: 1;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .intro {
+      margin-top: 2rem;
+    }
+
+    .intro pre {
+      margin-top: 0;
+    }
+
+    .intro code {
+      padding-top: 0;
+    }
+
+    .hint {
+      opacity: 0.6;
+      font-weight: normal;
+    }
+
+    mark {
+      background: #dd464c;
+      color: #fff;
+      border-radius: 3px;
+      margin-top: .3rem;
+      margin-bottom: .3rem;
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+      font-weight: bold;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      font-size: .8rem;
+    }
+
+
+    [data-cell] {
+      margin-top: .3rem;
+      margin-bottom: .3rem;
+    }
+
+    .highlight {
+      color: #fd8b19;
+      font-weight: bold;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      font-size: 88%;
+
+    }
+
+    .horizontal-sample {
+      border-radius: 4px;
+      padding: 1rem;
+      background: rgba(221, 70, 76, .08);
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .vertical-sample {
+      height: 130px;
+      border-radius: 4px;
+      padding: 1rem;
+      background: rgba(221, 70, 76, .08);
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    pre {
+      overflow: auto;
+    }
+
+    .hljs-name {
+      color: #dd464c;
+    }
+
+    .hljs-tag,
+    .hljs {
+      color: #b9b5b8;
+    }
+
+    .hljs-number,
+    .hljs-built_in,
+    .hljs-builtin-name,
+    .hljs-literal,
+    .hljs-attribute,
+    .hljs-attr,
+    .hljs-type,
+    .hljs-params {
+      color: #fd8b19;
+    }
+
+    .hljs-string {
+      color: #8fc13e;
+    }
+
+    .hljs {
+      display: block;
+      background: none;
+      padding: 0.5em;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .button {
+      background: #dd464c;
+      padding: 1rem;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0.85em 1em;
+      -webkit-appearance: none;
+      border: 1px solid transparent;
+      -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+      transition: background-color 0.25s ease-out, color 0.25s ease-out;
+      font-size: 0.9rem;
+      line-height: 1;
+      text-align: center;
+      cursor: pointer;
+      color: #fefefe;
+      border-radius: 4px;
+      margin: .3rem 0;
+      font-size: 80%;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #322931;
+    }
+
+    .button.sh {
+      background: #322931;
+      cursor: text;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div data-container>
+    <div class="intro">
+      <h1>Bute Layout</h1>
+      <p class="lead">Small flexbox layout system that keeps structure away from styles.
+        <br> Instead of populating class attribute the following data-attributes are used:
+        <br>
+        <span class="highlight">data-container</span>,
+        <span class="highlight">data-grid</span>,
+        <span class="highlight">data-cell</span>,
+        <span class="highlight">data-offset</span>,
+        <span class="highlight">data-order</span>,
+        <span class="highlight">data-align</span>,
+        <span class="highlight">data-visibility</span>
+        <br>
+        <br> like this:
+      </p>
+      <pre><code class="html">
+<div data-container>
+  <div data-grid>
+    <div data-cell="xs-4 lg-3" data-align="bottom"></div>
+    <div data-cell="xs-4 lg-3" data-offset="lg-3"></div>
+    <div data-cell="xs-4 lg-3" data-order="md-first" data-visibility="xs-hide"></div>
+  </div>
+</div>
+</code></pre>
+      <p>This way you can keep your code more readable and use class attribute just for styling things.
+        <br>
+        <br>
+        <a href="https://raw.githubusercontent.com/butelayout/butelayout/master/dist/butelayout.css" class="button">Download butelayout.css (2kb gzipped)</a> or
+        <span class="button sh">npm install butelayout</span>
+      </p>
+
+
+    </div>
+    <h2>Grids</h2>
+
+    <h3>12 Cell System</h3>
+    <div data-grid>
+      <div data-cell="xs-12">
+        <mark>12/12</mark>
+      </div>
+      <div data-cell="xs-1">
+        <mark>1/12</mark>
+      </div>
+      <div data-cell="xs-11">
+        <mark>11/12</mark>
+      </div>
+      <div data-cell="xs-10">
+        <mark>10/12</mark>
+      </div>
+      <div data-cell="xs-2">
+        <mark>2/12</mark>
+      </div>
+      <div data-cell="xs-3">
+        <mark>3/12</mark>
+      </div>
+      <div data-cell="xs-9">
+        <mark>9/12</mark>
+      </div>
+      <div data-cell="xs-8">
+        <mark>8/12</mark>
+      </div>
+      <div data-cell="xs-4">
+        <mark>4/12</mark>
+      </div>
+      <div data-cell="xs-5">
+        <mark>5/12</mark>
+      </div>
+      <div data-cell="xs-7">
+        <mark>7/12</mark>
+      </div>
+      <div data-cell="xs-6">
+        <mark>6/12</mark>
+      </div>
+      <div data-cell="xs-6">
+        <mark>6/12</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid>
+  <div data-cell="xs-12"></div>
+  <div data-cell="xs-1"></div>
+  <div data-cell="xs-11"></div>
+  <div data-cell="xs-10"></div>
+  <div data-cell="xs-2"></div>
+  …
+</div>
+</code></pre>
+
+  </div>
+
+
+  <div data-container>
+    <h3>Block Grid System</h3>
+
+    <div data-grid="xs-12">
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+      <div data-cell>
+        <mark>1/12</mark>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div data-container>
+    <div data-grid="xs-7">
+      <div data-cell>
+        <mark>
+          1/7
+        </mark>
+      </div>
+      <div data-cell>
+        <mark>
+          1/7
+        </mark>
+      </div>
+      <div data-cell>
+        <mark>
+          1/7
+        </mark>
+      </div>
+      <div data-cell>
+        <mark>
+          1/7
+        </mark>
+      </div>
+      <div data-cell>
+        <mark>
+          1/7
+        </mark>
+      </div>
+      <div data-cell>
+        <mark>
+          1/7
+        </mark>
+      </div>
+      <div data-cell>
+        <mark>
+          1/7
+        </mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid="xs-12">
+  <div data-cell></div>
+  <div data-cell></div>
+  …
+</div>
+<div data-grid="xs-7">
+  <div data-cell></div>
+  <div data-cell></div>
+  ..
+</div>
+</code></pre>
+  </div>
+
+  <div data-container>
+    <h3>Auto Grid System</h3>
+    <div data-grid="auto">
+      <div data-cell>
+        <mark>auto</mark>
+      </div>
+      <div data-cell>
+        <mark>auto</mark>
+      </div>
+      <div data-cell>
+        <mark>auto</mark>
+      </div>
+      <div data-cell>
+        <mark>auto</mark>
+      </div>
+    </div>
+    <br>
+    <div data-grid>
+      <div data-cell="auto">
+        <mark>auto</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>auto</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>auto</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>auto</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>auto</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>auto</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid="auto">
+  <div data-cell></div>
+  <div data-cell></div>
+  <div data-cell></div>
+  <div data-cell></div>
+</div>
+<div data-grid="auto">
+  <div data-cell></div>
+  <div data-cell></div>
+  <div data-cell></div>
+  <div data-cell></div>
+  <div data-cell></div>
+</div>
+</code></pre>
+  </div>
+
+  <div data-container>
+    <h3>Mix Systems</h3>
+    <div data-grid>
+      <div data-cell="auto">
+        <mark>auto
+          <span class="hint">(3/12)</span>
+        </mark>
+      </div>
+      <div data-cell="xs-2">
+        <mark>2/12</mark>
+      </div>
+      <div data-cell="xs-4">
+        <mark>4/12</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>auto
+          <span class="hint">(3/12)</span>
+        </mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid>
+  <div data-cell="auto"></div>
+  <div data-cell="xs-2"></div>
+  <div data-cell="xs-4"></div>
+  <div data-cell="auto"></div>
+</div>
+</code></pre>
+  </div>
+
+  <div data-container>
+    <h3>Offsets</h3>
+    <div data-grid>
+      <div data-cell="xs-9" data-offset="xs-3">
+        <mark>offset 3</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid>
+  <div data-cell="xs-9" data-offset="xs-3"></div>
+</div>
+</code></pre>
+  </div>
+
+  <div data-container>
+    <h3>Nesting</h3>
+    <div data-grid="auto">
+      <div data-cell>
+        <mark>6</mark>
+      </div>
+      <div data-cell data-grid>
+        <div data-cell="xs-12">
+          <mark>6</mark>
+        </div>
+        <div data-cell="xs-6">
+          <mark>6</mark>
+        </div>
+        <div data-cell="xs-6">
+          <mark>6</mark>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-container>
+    <h3>Remove gutters</h3>
+    <div data-grid="noGutters">
+      <div data-cell="auto">
+        <mark>auto</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>auto</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>auto</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid="noGutters">
+  …
+</div>
+</code></pre>
+  </div>
+
+  <div data-container class="bgColor">
+    <h3>Container settings</h3>
+    <div data-grid>
+      <div data-cell="auto">
+        <mark>
+          data-container
+        </mark>
+      </div>
+      <div data-cell="auto">
+        <mark>
+          data-container
+        </mark>
+      </div>
+    </div>
+  </div>
+  <div data-container="fluid">
+    <div data-grid>
+      <div data-cell="auto">
+        <mark>
+          data-container="fluid"
+        </mark>
+      </div>
+      <div data-cell="auto">
+        <mark>
+          data-container="fluid"
+        </mark>
+      </div>
+    </div>
+  </div>
+  <div data-container>
+    <pre><code class="html">
+<div data-container>
+  <div data-grid></div>
+  <div data-grid></div>
+</div>
+<div data-container="fluid">
+  <div data-grid></div>
+  <div data-grid></div>
+</div>
+</code></pre>
+  </div>
+  </div>
+
+
+  <div data-container>
+    <h3>Breakpoints</h3>
+
+    <div data-grid="xs-2 sm-4 md-6 lg-12">
+      <div data-cell>
+        <mark>1</mark>
+      </div>
+      <div data-cell>
+        <mark>2</mark>
+      </div>
+      <div data-cell>
+        <mark>3</mark>
+      </div>
+      <div data-cell>
+        <mark>4</mark>
+      </div>
+      <div data-cell>
+        <mark>5</mark>
+      </div>
+      <div data-cell>
+        <mark>6</mark>
+      </div>
+      <div data-cell>
+        <mark>7</mark>
+      </div>
+      <div data-cell>
+        <mark>8</mark>
+      </div>
+      <div data-cell>
+        <mark>9</mark>
+      </div>
+      <div data-cell>
+        <mark>10</mark>
+      </div>
+      <div data-cell>
+        <mark>11</mark>
+      </div>
+      <div data-cell>
+        <mark>12</mark>
+      </div>
+    </div>
+    <div data-grid>
+      <div data-cell="xs-4 sm-3 md-4 lg-4">
+        <mark>xs-4 sm-3 md-4 lg-4</mark>
+      </div>
+      <div data-cell="xs-4 sm-6 md-6 lg-6">
+        <mark>xs-4 sm-6 md-6 lg-6</mark>
+      </div>
+      <div data-cell="xs-4 sm-3 md-2 lg-2">
+        <mark>xs-4 sm-3 md-2 lg-2</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid="xs-2 sm-4 md-6 lg-12">
+  <div data-cell></div>
+  <div data-cell></div>
+  …
+</div>
+<div data-grid>
+  <div data-cell="xs-4 sm-3 md-4 lg-4"></div>
+  <div data-cell="xs-4 sm-6 md-6 lg-6"></div>
+  <div data-cell="xs-4 sm-3 md-2 lg-2"></div>
+</div>
+</code></pre>
+  </div>
+
+
+  <div data-container>
+    <h2>Ordering</h2>
+    <h3>Reverse</h3>
+    <div data-grid data-order="lg-reverse">
+      <div data-cell="auto">
+        <mark>1st
+          <span class="hint">(reversed on large)</span>
+        </mark>
+      </div>
+      <div data-cell="auto">
+        <mark>2nd
+          <span class="hint">(reversed on large)</span>
+        </mark>
+      </div>
+
+    </div>
+    <pre><code class="html">
+<div data-grid data-order="lg-reverse">
+  <div data-cell="auto"></div>
+  <div data-cell="auto"></div>
+</div>
+</code></pre>
+    <h3>Pull to first</h3>
+    <div data-grid>
+      <div data-cell="auto">
+        <mark>1st</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>2nd</mark>
+      </div>
+      <div data-cell="auto">
+        <mark>3rd</mark>
+      </div>
+      <div data-cell="auto" data-order="lg-first">
+        <mark>4th
+          <span class="hint">(1st on large)</span>
+        </mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid>
+  <div data-cell="auto"></div>
+  <div data-cell="auto"></div>
+  <div data-cell="auto"></div>
+  <div data-cell="auto" data-order="lg-first"></div>
+</div>
+</code></pre>
+    <h3>Exact numbering</h3>
+    <div data-grid>
+      <div data-cell="auto" data-order="lg-2">
+        <mark>1st
+          <span class="hint">(2nd on large)</span>
+        </mark>
+      </div>
+      <div data-cell="auto" data-order="lg-3">
+        <mark>2nd
+          <span class="hint">(3rd on large)</span>
+        </mark>
+      </div>
+      <div data-cell="auto" data-order="lg-4">
+        <mark>3rd
+          <span class="hint">(4th on large)</span>
+        </mark>
+      </div>
+      <div data-cell="auto" data-order="lg-1">
+        <mark>4th
+          <span class="hint">(1st on large)</span>
+        </mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid>
+  <div data-cell="auto" data-order="lg-2"></div>
+  <div data-cell="auto" data-order="lg-3"></div>
+  <div data-cell="auto" data-order="lg-4"></div>
+  <div data-cell="auto" data-order="lg-1"></div>
+</div>
+</code></pre>
+  </div>
+
+  <div data-container>
+    <h2>Alignment</h2>
+    <h3>Horizontal alignment</h3>
+    <div data-grid data-align="left" class="horizontal-sample">
+      <div data-cell="xs-2">
+        <mark>left</mark>
+      </div>
+      <div data-cell="xs-2">
+        <mark>left</mark>
+      </div>
+    </div>
+    <div data-grid data-align="center" class="horizontal-sample">
+      <div data-cell="xs-2">
+        <mark>center</mark>
+      </div>
+      <div data-cell="xs-2">
+        <mark>center</mark>
+      </div>
+    </div>
+    <div data-grid data-align="right" class="horizontal-sample">
+      <div data-cell="xs-2">
+        <mark>right</mark>
+      </div>
+      <div data-cell="xs-2">
+        <mark>right</mark>
+      </div>
+    </div>
+    <div data-grid data-align="justify" class="horizontal-sample">
+      <div data-cell="xs-2">
+        <mark>justify</mark>
+      </div>
+      <div data-cell="xs-2">
+        <mark>justify</mark>
+      </div>
+    </div>
+    <div data-grid data-align="spaced" class="horizontal-sample">
+      <div data-cell="xs-2">
+        <mark>spaced</mark>
+      </div>
+      <div data-cell="xs-2">
+        <mark>spaced</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid data-align="left">
+…
+</div>
+<div data-grid data-align="center">
+…
+</div>
+<div data-grid data-align="right">
+…
+</div>
+<div data-grid data-align="justify">
+…
+</div>
+<div data-grid data-align="spaced">
+…
+</div>
+</code></pre>
+    <h3>Vertical alignment</h3>
+    <div data-grid data-align="top" class="vertical-sample">
+      <div data-cell="xs-4">
+        <mark>top</mark>
+      </div>
+    </div>
+    <div data-grid data-align="middle" class="vertical-sample">
+      <div data-cell="xs-4">
+        <mark>middle</mark>
+      </div>
+    </div>
+    <div data-grid data-align="bottom" class="vertical-sample">
+      <div data-cell="xs-4">
+        <mark>bottom</mark>
+      </div>
+    </div>
+    <div data-grid data-align="stretch" class="vertical-sample">
+      <div data-cell="xs-4">
+        <mark class="">stretch</mark>
+      </div>
+      <div data-cell="xs-4">
+        <mark class="">stretch</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid data-align="top">
+…
+</div>
+<div data-grid data-align="middle">
+…
+</div>
+<div data-grid data-align="bottom">
+…
+</div>
+<div data-grid data-align="stretch">
+…
+</div>
+</code></pre>
+    <h3>Combine horizontal and vertical</h3>
+    <div data-grid data-align="top center" class="vertical-sample">
+      <div data-cell="xs-4">
+        <mark>top center</mark>
+      </div>
+    </div>
+    <div data-grid data-align="middle right" class="vertical-sample">
+      <div data-cell="xs-4">
+        <mark>middle right</mark>
+      </div>
+    </div>
+    <div data-grid data-align="top justify" class="vertical-sample">
+      <div data-cell="xs-4">
+        <mark>top justify</mark>
+      </div>
+      <div data-cell="xs-4">
+        <mark>top justify</mark>
+      </div>
+    </div>
+    <div data-grid data-align="bottom spaced" class="vertical-sample">
+      <div data-cell="xs-4">
+        <mark>bottom</mark>
+      </div>
+      <div data-cell="xs-4">
+        <mark>bottom</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid data-align="top center">
+…
+</div>
+<div data-grid data-align="middle right">
+…
+</div>
+<div data-grid data-align="top justify">
+…
+</div>
+<div data-grid data-align="bottom spaced">
+…
+</div>
+</code></pre>
+
+    <h3>Align individual cells</h3>
+    <div data-grid class="vertical-sample">
+      <div data-cell="auto" data-align="bottom">
+        <mark>bottom</mark>
+      </div>
+      <div data-cell="auto" data-align="middle">
+        <mark>middle</mark>
+      </div>
+      <div data-cell="auto" data-align="stretch">
+        <mark>stretch</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid>
+  <div data-cell data-align="bottom">…</div>
+  <div data-cell data-align="middle">…</div>
+  <div data-cell data-align="stretch">…</div>
+</div>
+</code></pre>
+  </div>
+
+  <div data-container>
+    <h2>Visibility</h2>
+    <div data-grid="auto">
+      <div data-cell data-visibility="xs-hide">
+        <mark>hide on xs</mark>
+      </div>
+      <div data-cell data-visibility="sm-hide">
+        <mark>hide on sm</mark>
+      </div>
+      <div data-cell data-visibility="md-hide">
+        <mark>hide on md</mark>
+      </div>
+      <div data-cell data-visibility="lg-hide">
+        <mark>hide on lg</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid>
+  <div data-cell data-visibility="xs-hide">…</div>
+  <div data-cell data-visibility="sm-hide">…</div>
+  <div data-cell data-visibility="md-hide">…</div>
+  <div data-cell data-visibility="lg-hide">…</div>
+</div>
+</code></pre>
+    <div data-grid="auto">
+      <div data-cell data-visibility="xs-show">
+        <mark>show on xs</mark>
+      </div>
+      <div data-cell data-visibility="sm-show">
+        <mark>show on sm</mark>
+      </div>
+      <div data-cell data-visibility="md-show">
+        <mark>show on md</mark>
+      </div>
+      <div data-cell data-visibility="lg-show">
+        <mark>show on lg</mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid>
+  <div data-cell data-visibility="xs-show">…</div>
+  <div data-cell data-visibility="sm-show">…</div>
+  <div data-cell data-visibility="md-show">…</div>
+  <div data-cell data-visibility="lg-show">…</div>
+</div>
+</code></pre>
+    <div data-grid="auto">
+      <div data-cell data-visibility="xs-hide md-hide">
+        <mark>A
+          <span class="hint"> (sm and lg)</span>
+        </mark>
+      </div>
+      <div data-cell data-visibility="sm-hide lg-hide">
+        <mark>B
+          <span class="hint"> (xs and md)</span>
+        </mark>
+      </div>
+    </div>
+    <pre><code class="html">
+<div data-grid>
+  <div data-cell data-visibility="xs-hide md-hide">A</div>
+  <div data-cell data-visibility="sm-hide lg-hide">B</div>
+</div>
+</code></pre>
+
+  </div>
+
+
+
+  <script>
+    document.querySelectorAll("code").forEach(function (element) {
+      element.innerHTML = element.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(
+        /"/g, "&quot;").replace(/'/g, "&#039;").replace(/=""/g, "xxxxx");
+    });
+    hljs.initHighlightingOnLoad();
+    document.querySelectorAll("code").forEach(function (element) {
+      element.innerHTML = element.innerHTML.replace(/=""/g, "");
+    });
+  </script>
+</body>
+
+
+</html>
