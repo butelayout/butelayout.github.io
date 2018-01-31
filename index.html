@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Small flexbox layout system that keeps structure away from styles.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e34023">
+  <meta name="theme-color" content="#ffffff">
   <title>Bute Layout – Flexbox layout system</title>
   <link rel="stylesheet" href="butelayout.css">
   <script src="highlight.pack.js"></script>
@@ -52,17 +58,20 @@
       margin-top: 2rem;
       text-align: center
     }
-    .intro p{
-      margin:.5rem auto;
+
+    .intro p {
+      margin: .5rem auto;
     }
 
 
     .intro2 h2 {
       margin-bottom: 2.6rem;
     }
-    .intro2 pre, .intro2 code {
-      margin:0;
-      padding:0;
+
+    .intro2 pre,
+    .intro2 code {
+      margin: 0;
+      padding: 0;
     }
 
     .hint {
@@ -185,7 +194,8 @@
       background: #322931;
       cursor: text;
     }
-    .logo{
+
+    .logo {
       width: 60%;
       max-width: 150px;
       margin: 1.6rem auto;
@@ -201,21 +211,25 @@
       border-radius: 100%;
       z-index: 10;
     }
-    .github-bottom{
-      width:1.6rem;
+
+    .github-bottom {
+      width: 1.6rem;
       display: block;
       margin: .3rem auto;
     }
-    .github path{
+
+    .github path {
       transition: all .2s;
     }
-    .github:hover path{
+
+    .github:hover path {
       fill: #dd464c
     }
-    footer{
+
+    footer {
       padding: 6rem 0;
       text-align: center;
-      font-size:.8rem;
+      font-size: .8rem;
       color: #b9b5b8;
     }
   </style>
@@ -232,15 +246,30 @@
   <div data-container>
 
     <div class="intro">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 500 500" class="logo"><defs><linearGradient id="a" x1="250" x2="250" y1="490" y2="10" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd8b19"/><stop offset=".25" stop-color="#f06f2e"/><stop offset=".52" stop-color="#e6583e"/><stop offset=".776" stop-color="#df4b49"/><stop offset="1" stop-color="#dd464c"/></linearGradient></defs><rect width="500" height="480" y="10" fill="#fff" rx="90" ry="90"/><path fill="url(#a)" d="M410 20a80.091 80.091 0 0 1 80 80v300a80.091 80.091 0 0 1-80 80H90a80.091 80.091 0 0 1-80-80V100a80.091 80.091 0 0 1 80-80h320m0-10H90a90 90 0 0 0-90 90v300a90 90 0 0 0 90 90h320a90 90 0 0 0 90-90V100a90 90 0 0 0-90-90z"/><path fill="#dd464c" d="M88.931 258.416c0-22.051 1.049-44.8 3.149-67.552 1.75-19.6 3.5-47.25 29.4-53.2 17.151-3.851 34.3-4.2 55.3-4.2 79.452 0 112 24.15 112 69.651 0 21.35-15.4 40.251-34.65 49 23.45 8.75 45.5 25.9 45.5 58.451 0 56-45.851 72.1-106.052 72.1-23.1 0-42.7-.7-58.451-2.45-35-3.85-39.551-19.6-42.351-46.9a723.774 723.774 0 0 1-3.845-74.9zm77-12.95c9.1-1.05 21.35-1.75 33.6-2.1 11.9-7.35 19.6-18.2 19.6-31.851 0-17.5-7.7-29.4-32.9-29.4-4.549 0-11.9.351-20.3 1.05zm18.2 87.851c27.3 0 44.1-8.4 44.1-28.35 0-19.6-20.3-24.151-40.95-24.151a176.4 176.4 0 0 0-21.35 1.05v51.451zM381.284 309.867c0 18.2 4.2 21.351 10.15 21.351 3.85 0 8.05-1.051 11.55-1.051 12.951 0 16.1 13.65 16.1 23.1 0 22.05-14 30.45-47.25 30.45-37.1 0-53.9-17.85-58.1-42.7-3.5-22.051-4.9-46.9-4.9-72.1 0-35.351 2.1-72.451 4.55-105.352a30.83 30.83 0 0 1-5.95.7c-14 0-18.9-8.751-18.9-26.952 0-10.849 5.25-21.35 18.2-23.45a130.577 130.577 0 0 1 24.151-1.75c31.15 0 50.051 11.55 50.4 44.451z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 500 500" class="logo">
+        <defs>
+          <linearGradient id="a" x1="250" x2="250" y1="490" y2="10" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fd8b19" />
+            <stop offset=".25" stop-color="#f06f2e" />
+            <stop offset=".52" stop-color="#e6583e" />
+            <stop offset=".776" stop-color="#df4b49" />
+            <stop offset="1" stop-color="#dd464c" />
+          </linearGradient>
+        </defs>
+        <rect width="500" height="480" y="10" fill="#fff" rx="90" ry="90" />
+        <path fill="url(#a)" d="M410 20a80.091 80.091 0 0 1 80 80v300a80.091 80.091 0 0 1-80 80H90a80.091 80.091 0 0 1-80-80V100a80.091 80.091 0 0 1 80-80h320m0-10H90a90 90 0 0 0-90 90v300a90 90 0 0 0 90 90h320a90 90 0 0 0 90-90V100a90 90 0 0 0-90-90z"
+        />
+        <path fill="#dd464c" d="M88.931 258.416c0-22.051 1.049-44.8 3.149-67.552 1.75-19.6 3.5-47.25 29.4-53.2 17.151-3.851 34.3-4.2 55.3-4.2 79.452 0 112 24.15 112 69.651 0 21.35-15.4 40.251-34.65 49 23.45 8.75 45.5 25.9 45.5 58.451 0 56-45.851 72.1-106.052 72.1-23.1 0-42.7-.7-58.451-2.45-35-3.85-39.551-19.6-42.351-46.9a723.774 723.774 0 0 1-3.845-74.9zm77-12.95c9.1-1.05 21.35-1.75 33.6-2.1 11.9-7.35 19.6-18.2 19.6-31.851 0-17.5-7.7-29.4-32.9-29.4-4.549 0-11.9.351-20.3 1.05zm18.2 87.851c27.3 0 44.1-8.4 44.1-28.35 0-19.6-20.3-24.151-40.95-24.151a176.4 176.4 0 0 0-21.35 1.05v51.451zM381.284 309.867c0 18.2 4.2 21.351 10.15 21.351 3.85 0 8.05-1.051 11.55-1.051 12.951 0 16.1 13.65 16.1 23.1 0 22.05-14 30.45-47.25 30.45-37.1 0-53.9-17.85-58.1-42.7-3.5-22.051-4.9-46.9-4.9-72.1 0-35.351 2.1-72.451 4.55-105.352a30.83 30.83 0 0 1-5.95.7c-14 0-18.9-8.751-18.9-26.952 0-10.849 5.25-21.35 18.2-23.45a130.577 130.577 0 0 1 24.151-1.75c31.15 0 50.051 11.55 50.4 44.451z"
+        />
+      </svg>
       <h1>Bute Layout</h1>
       <p class="lead">Small flexbox layout system that keeps structure away from styles.
-        
+
       </p>
 
 
-        <a href="https://raw.githubusercontent.com/butelayout/butelayout/master/dist/butelayout.css" class="button">Download butelayout.css (2kb gzipped)</a> or
-        <span class="button sh">npm install butelayout</span>
+      <a href="https://raw.githubusercontent.com/butelayout/butelayout/master/dist/butelayout.css" class="button">Download butelayout.css (2kb gzipped)</a> or
+      <span class="button sh">npm install butelayout</span>
       </p>
 
 
@@ -250,15 +279,15 @@
     <h2>Introduction</h2>
     <p>Instead of populating class attribute the following data-attributes are used:
       <br>
-        <span class="highlight">data-container</span>,
-        <span class="highlight">data-grid</span>,
-        <span class="highlight">data-cell</span>,
-        <span class="highlight">data-offset</span>,
-        <span class="highlight">data-order</span>,
-        <span class="highlight">data-align</span>,
-        <span class="highlight">data-visibility</span>
+      <span class="highlight">data-container</span>,
+      <span class="highlight">data-grid</span>,
+      <span class="highlight">data-cell</span>,
+      <span class="highlight">data-offset</span>,
+      <span class="highlight">data-order</span>,
+      <span class="highlight">data-align</span>,
+      <span class="highlight">data-visibility</span>
     </p>
-<pre><code class="html">
+    <pre><code class="html">
 <div data-container>
   <div data-grid>
     <div data-cell="xs-4 lg-3" data-align="bottom"></div>
@@ -267,10 +296,10 @@
   </div>
 </div>
 </code></pre>
-<br>
-<p>This way you can keep your code more readable and use class attribute just for styling things.
-</div>
-<div data-container>
+    <br>
+    <p>This way you can keep your code more readable and use class attribute just for styling things.
+  </div>
+  <div data-container>
     <h2>Grid</h2>
 
     <h3>12 Cell System</h3>
@@ -540,7 +569,7 @@
         </div>
       </div>
     </div>
-<pre><code class="html">
+    <pre><code class="html">
 <div data-grid="auto">
   <div data-cell>…</div>
   <div data-cell data-grid>
@@ -991,12 +1020,12 @@
   </div>
 
   <footer>
-      <a href="https://github.com/butelayout/butelayout" class="github github-bottom">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 256 250" preserveAspectRatio="xMidYMid">
-          <path fill="#161614" d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"
-          />
-        </svg>
-      </a>
+    <a href="https://github.com/butelayout/butelayout" class="github github-bottom">
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 256 250" preserveAspectRatio="xMidYMid">
+        <path fill="#161614" d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"
+        />
+      </svg>
+    </a>
     Released under the MIT License.
   </footer>
 
