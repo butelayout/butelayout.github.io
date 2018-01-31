@@ -64,6 +64,33 @@
       text-align: left;
     }
 
+    .intro h3 {
+      margin-top: 1rem;
+      margin-bottom: .3rem;
+    }
+
+    .intro pre,
+    .intro code {
+      margin: 0;
+      padding: 0;
+    }
+
+    .installation h2 {
+      margin-bottom: 1.6rem;
+    }
+
+    .installation h3 {
+      margin-top: 1rem;
+      margin-bottom: .1rem;
+    }
+
+    .installation pre,
+    .installation code {
+      margin: 0;
+      padding: 0;
+    }
+
+
 
     p {
       margin: 0;
@@ -188,15 +215,14 @@
       padding: 0.85em 1em;
       -webkit-appearance: none;
       border: 1px solid transparent;
-      -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
-      transition: background-color 0.25s ease-out, color 0.25s ease-out;
-      font-size: 0.9rem;
+      -webkit-transition: background-color 0.25s ease-out;
+      transition: background-color 0.25s ease-out;
       line-height: 1;
       text-align: center;
       cursor: pointer;
       color: #fefefe;
       border-radius: 4px;
-      margin: .3rem 0;
+      margin: .3rem 0 0;
       font-size: 75%;
       font-weight: bold;
     }
@@ -247,6 +273,14 @@
       font-size: .8rem;
       color: #b9b5b8;
     }
+
+    ::selection {
+      background: #c85e7c;
+    }
+
+    ::-moz-selection {
+      background: #c85e7c;
+    }
   </style>
 </head>
 
@@ -283,8 +317,13 @@
       </p>
 
 
-      <a href="https://raw.githubusercontent.com/butelayout/butelayout/master/dist/butelayout.css" class="button">Download butelayout.css (2kb gzipped)</a> or
+      <!-- <a href="https://raw.githubusercontent.com/butelayout/butelayout/master/dist/butelayout.css" class="button">Download butelayout.css (2kb gzipped)</a>
       <span class="button sh">npm install butelayout</span>
+      <br>
+      <span class="button sh">
+        <pre><code> <link href="https://cdn.jsdelivr.net/npm/butelayout/dist/butelayout.css" rel="stylesheet"></pre>
+        </code>
+      </span> -->
       </p>
 
 
@@ -313,6 +352,34 @@
 </code></pre>
     <br>
     <p>This way you can keep your code more readable and use class attribute just for styling things.
+  </div>
+  <div data-container class="installation">
+    <h2>Installation</h2>
+    <div data-grid>
+
+      <!-- <div data-cell>
+        <h3>Download</h3>
+        <a href="https://raw.githubusercontent.com/butelayout/butelayout/master/dist/butelayout.css" class="button">Download butelayout.css (2kb gzipped)</a>
+      </div> -->
+      <div data-cell>
+        <h3>Install via NPM</h3>
+        <span class="button sh">npm install butelayout</span>
+      </div>
+      <div data-cell>
+        <h3>Quick installation <span class="hint">CDN</span>
+          </h3>
+        <span class="button sh">
+          <pre><code> <link href="https://cdn.jsdelivr.net/npm/butelayout/dist/butelayout.css" rel="stylesheet"></pre>
+          </code>
+        </span>
+      </div>
+           <div data-cell>
+        <h3>Download production or source files</h3>
+        <a href="https://github.com/butelayout/butelayout" class="button">View on Github</a>
+      </div>
+      <br>
+
+    </div>
   </div>
   <div data-container>
     <h2>Grid</h2>
